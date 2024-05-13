@@ -21,10 +21,11 @@ export const createInstance = async <T>({
 }): Promise<T> => {
   const response = await fetch(`${baseURL}${url}` + new URLSearchParams(params), {
     method,
+    credentials: 'include',
     ...(data ? { body: JSON.stringify(data) } : {}),
   });
 
-  if (response.status.toString().startsWith('2')) {
+  if (!response.status.toString().startsWith('2')) {
     throw new ApiError(response);
   }
 
