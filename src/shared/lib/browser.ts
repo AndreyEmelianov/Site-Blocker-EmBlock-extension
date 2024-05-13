@@ -3,6 +3,8 @@ export const createTab = (url: string) => {
 };
 
 export type NetRules = chrome.declarativeNetRequest.Rule;
+export const NetRuleActionType = chrome.declarativeNetRequest.RuleActionType;
+export const NetRuleResourceType = chrome.declarativeNetRequest.ResourceType;
 
 export const setNetRules = async (newRules: NetRules[]) => {
   const oldRules = await chrome.declarativeNetRequest.getDynamicRules();
